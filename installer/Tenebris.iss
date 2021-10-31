@@ -55,15 +55,13 @@ Source: "..\build-win\vst3\x64\Release\Tenebris.vst3"; DestDir: "{cf64}\VST3\RAR
 Source: "..\build-win\Tenebris.vst3\Desktop.ini"; DestDir: "{cf64}\VST3\RAR-AUDIO\Tenebris.vst3\"; Flags: overwritereadonly ignoreversion; Attribs: hidden system; Components: vst3_64; Check: Is64BitInstallMode
 Source: "..\build-win\Tenebris.vst3\PlugIn.ico"; DestDir: "{cf64}\VST3\RAR-AUDIO\Tenebris.vst3\"; Flags: overwritereadonly ignoreversion; Attribs: hidden system; Components: vst3_64; Check: Is64BitInstallMode
 
-Source: "..\manual\Tenebris manual.pdf"; DestDir: "{app}"
-Source: "changelog.txt"; DestDir: "{app}"
-Source: "readme-win.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
+Source: "..\README.md"; DestDir: "{app}"; DestName: "README.md"; Flags: isreadme
 
 [Icons]
 Name: "{group}\Tenebris"; Filename: "{app}\Tenebris.exe"
-Name: "{group}\User guide"; Filename: "{app}\Tenebris manual.pdf"
+;Name: "{group}\User guide"; Filename: "{app}\Tenebris manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
-;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
+Name: "{group}\readme"; Filename: "{app}\readme.md"
 Name: "{group}\Uninstall Tenebris"; Filename: "{app}\unins000.exe"
 
 [Code]
