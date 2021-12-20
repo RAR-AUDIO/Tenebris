@@ -72,7 +72,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                Rar::Graphics::Layout::RAR_COLOR_LIGHT_GRAY, // Extra 1
+                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -119,7 +119,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                IColor (255, 30, 60, 160), // Extra 1
+                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -166,7 +166,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                IColor (255, 201, 20, 31), // Extra 1
+                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -295,39 +295,39 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->AttachControl (new Rar::Graphics::Controls::RarGroupControl (b.GetReducedFromTop (60).GetFromTop (90).GetCentredInside (400.0F, 120.0F), "Main Controls", 150.0F));
 
         // Knobs
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
-                                                                              KBits,
-                                                                              "",
-                                                                              redKnob,
-                                                                              true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
+                                                                        KBits,
+                                                                        "",
+                                                                        redKnob,
+                                                                        true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
-                                                                              KSampleRate,
-                                                                              "",
-                                                                              blueKnob,
-                                                                              true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
+                                                                        KSampleRate,
+                                                                        "",
+                                                                        blueKnob,
+                                                                        true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                              KInputGain,
-                                                                              "",
-                                                                              defaultKnob,
-                                                                              true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                        KInputGain,
+                                                                        "",
+                                                                        defaultKnob,
+                                                                        true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                              KMix,
-                                                                              "",
-                                                                              defaultKnob,
-                                                                              true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                        KMix,
+                                                                        "",
+                                                                        defaultKnob,
+                                                                        true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                              KOutputGain,
-                                                                              "",
-                                                                              defaultKnob,
-                                                                              true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                        KOutputGain,
+                                                                        "",
+                                                                        defaultKnob,
+                                                                        true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
         // Filter Buttons
