@@ -21,6 +21,8 @@
 //==================================================================================
 /* iPlug Includes */
 #include "IPlug_include_in_plug_hdr.h"
+
+#include "Extras/Oversampler.h"
 //==================================================================================
 /* RarClasses Includes */
 #include "DSP/RAR_Effects.hpp" //DownSampler and BitCrusher
@@ -48,6 +50,7 @@ enum EParams
 enum ECtrlTags
 {
     CInfoText,
+    CInfo,
     CClippingButton,
     CClippingLed,
     CSignalInLed,
@@ -83,6 +86,8 @@ private:
 
     /* Clipping */
     std::atomic_bool clippingSignal;
+
+    OverSampler<double> over_sampler_ { k4x, true, 2, 2 };
 };
 
 #endif // TENEBRIS_H

@@ -72,7 +72,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
+                Rar::Graphics::Layout::RAR_COLOR_DARK_GRAY, // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -119,7 +119,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
+                IColor (255, 30, 60, 160), // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -166,7 +166,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                Rar::Graphics::Layout::RAR_COLOR_TRANSLUCENT, // Extra 1
+                IColor (255, 201, 20, 31), // Extra 1
                 Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
@@ -295,39 +295,39 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->AttachControl (new Rar::Graphics::Controls::RarGroupControl (b.GetReducedFromTop (60).GetFromTop (90).GetCentredInside (400.0F, 120.0F), "Main Controls", 150.0F));
 
         // Knobs
-        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
-                                                                        KBits,
-                                                                        "",
-                                                                        redKnob,
-                                                                        true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
+                                                                              KBits,
+                                                                              "",
+                                                                              redKnob,
+                                                                              true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
-                                                                        KSampleRate,
-                                                                        "",
-                                                                        blueKnob,
-                                                                        true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
+                                                                              KSampleRate,
+                                                                              "",
+                                                                              blueKnob,
+                                                                              true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                        KInputGain,
-                                                                        "",
-                                                                        defaultKnob,
-                                                                        true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                              KInputGain,
+                                                                              "",
+                                                                              defaultKnob,
+                                                                              true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                        KMix,
-                                                                        "",
-                                                                        defaultKnob,
-                                                                        true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                              KMix,
+                                                                              "",
+                                                                              defaultKnob,
+                                                                              true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::SslKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
-                                                                        KOutputGain,
-                                                                        "",
-                                                                        defaultKnob,
-                                                                        true))
+        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+                                                                              KOutputGain,
+                                                                              "",
+                                                                              defaultKnob,
+                                                                              true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
         // Filter Buttons
@@ -374,6 +374,11 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
 
 #pragma region BottomBar
         pGraphics->AttachControl (new Rar::Graphics::Controls::RarPanel (barBottom, IColor (255, 17, 17, 17), false));
+        pGraphics->AttachControl (new ITextControl (barBottom.GetFromBottom (10.0F),
+                                                    "TEST THINGY",
+                                                    IText (DEFAULT_TEXT_SIZE, Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, "IBMPlexSans", EAlign::Near)),
+                                  CInfo,
+                                  "UI");
 
 #pragma endregion BottomBar
     }; // layout
@@ -400,51 +405,54 @@ void PLUG_CLASS_NAME::ProcessBlock (sample** inputs, sample** outputs, int nFram
     bitCrusher->setBits (bits);
     downSampler->configure (targetSampleRate, GetSampleRate(), GetSamplePos());
 
-    for (auto s = 0; s < nFrames; s++)
-    {
-        for (auto c = 0; c < NOutChansConnected(); c++)
-        {
-            if (active)
-            {
-                const auto drySignal = inputs[c][s] * inputGain;
+    over_sampler_.ProcessBlock (inputs, outputs, nFrames, 2, 2, [&] (sample** inputs, sample** outputs, int nFrames)
+                                {
+                                    for (auto s = 0; s < nFrames; ++s)
+                                    {
+                                        for (auto c = 0; c < NOutChansConnected(); c++)
+                                        {
+                                            if (active)
+                                            {
+                                                const auto drySignal = inputs[c][s] * inputGain;
 
-                // Clipping
-                if (clipping && drySignal > 1.0)
-                {
-                    tmpSignal = 1.0;
-                    clippingSignal.store (true);
-                }
-                else if (clipping && drySignal < -1.0)
-                {
-                    tmpSignal = -1.0;
-                    clippingSignal.store (true);
-                }
-                else
-                    tmpSignal = drySignal;
+                                                // Clipping
+                                                if (clipping && drySignal > 1.0)
+                                                {
+                                                    tmpSignal = 1.0;
+                                                    clippingSignal.store (true);
+                                                }
+                                                else if (clipping && drySignal < -1.0)
+                                                {
+                                                    tmpSignal = -1.0;
+                                                    clippingSignal.store (true);
+                                                }
+                                                else
+                                                    tmpSignal = drySignal;
 
-                tmpSignal = bitCrusher->crush (tmpSignal, 0.0);
-                tmpSignal = downSampler->resample (tmpSignal, c);
+                                                tmpSignal = bitCrusher->crush (tmpSignal, 0.0);
+                                                tmpSignal = downSampler->resample (tmpSignal, c);
 
-                // post filter
-                if (lpactive)
-                {
-                    lowPassSvf[c]->setCutoffFreq (Rar::rLimit (40.0, 20000.0, targetSampleRate));
-                    tmpSignal = lowPassSvf[c]->processAudioSample (tmpSignal, c);
-                }
+                                                // post filter
+                                                if (lpactive)
+                                                {
+                                                    lowPassSvf[c]->setCutoffFreq (Rar::rLimit (40.0, 20000.0, targetSampleRate));
+                                                    tmpSignal = lowPassSvf[c]->processAudioSample (tmpSignal, c);
+                                                }
 
-                if (hpactive)
-                    tmpSignal = highPassSvf[c]->processAudioSample (tmpSignal, c);
+                                                if (hpactive)
+                                                    tmpSignal = highPassSvf[c]->processAudioSample (tmpSignal, c);
 
-                // Mix
-                tmpSignal = tmpSignal * mix + drySignal * (1.0 - mix);
+                                                // Mix
+                                                tmpSignal = tmpSignal * mix + drySignal * (1.0 - mix);
 
-                outputs[c][s] = tmpSignal * outputGain;
-            }
-            else
-                outputs[c][s] = inputs[c][s];
-        }
-        downSampler->nextSample();
-    }
+                                                outputs[c][s] = tmpSignal * outputGain;
+                                            }
+                                            else
+                                                outputs[c][s] = inputs[c][s];
+                                        }
+                                        downSampler->nextSample();
+                                    }
+                                });
 }
 
 void PLUG_CLASS_NAME::OnIdle()
@@ -456,6 +464,9 @@ void PLUG_CLASS_NAME::OnIdle()
         SendControlValueFromDelegate (CClippingLed, 1.0);
     else
         SendControlValueFromDelegate (CClippingLed, 0.0);
+
+    if (GetUI())
+        dynamic_cast<ITextControl*> (GetUI()->GetControlWithTag (CInfo))->SetStrFmt (1024, "Samplerate: %6.0f | Framesize: %d | Channels: %d/%d | Version: %s", GetSampleRate(), GetBlockSize(), NInChansConnected(), NOutChansConnected(), PLUG_VERSION_STR);
 }
 
 void PLUG_CLASS_NAME::OnParamChangeUI (int paramIdx, EParamSource source)
@@ -526,6 +537,8 @@ void PLUG_CLASS_NAME::OnReset()
     /* Initialize Effects */
     bitCrusher = std::make_unique<Rar::Dsp::BitCrusher<double>>();
     downSampler = std::make_unique<Rar::Dsp::DownSampler<double>>();
+
+    over_sampler_.Reset (GetBlockSize());
 }
 
 #endif
