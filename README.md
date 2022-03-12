@@ -8,6 +8,8 @@
 <img  align="center" src="resources/img/Tenebris.png"></img>
 
 ## Author
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRAR-AUDIO%2FTenebris.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FRAR-AUDIO%2FTenebris?ref=badge_shield)
+
 
 👤 **RAR-AUDIO**
 
@@ -55,3 +57,7 @@ Choose the desired plug-in directory paths (those default are usually noted best
 ## Show your support
 
 Give a ⭐️ if you liked this project.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRAR-AUDIO%2FTenebris.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FRAR-AUDIO%2FTenebris?ref=badge_large)
