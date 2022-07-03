@@ -159,7 +159,7 @@ BEGIN
     "OffSwitch_FN SVG OffSwitch_FN\r\n"
     "BlackScrew_FN SVG BlackScrew_FN\r\n"
     "LedBezel_FN SVG LedBezel_FN\r\n"
-    "Logo_FN SVG Logo_FN\r\n"
+    "LOGO_FN PNG LOGO_FN\r\n"
     "\0"
 END
 
@@ -250,7 +250,7 @@ OnSwitch_FN SVG OnSwitch_FN
 OffSwitch_FN SVG OffSwitch_FN
 BlackScrew_FN SVG BlackScrew_FN
 LedBezel_FN SVG LedBezel_FN
-Logo_FN SVG Logo_FN
+LOGO_FN PNG LOGO_FN
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED

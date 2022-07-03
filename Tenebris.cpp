@@ -8,7 +8,9 @@
 /* RarClasses Includes*/
 #include "Utils/RAR_FontAwesome.hpp"
 #include "Utils/RAR_Graphics.hpp"
-//==================================================================================
+#include "Utils/Controls/SettingsMenu.hpp"
+
+//===========================================================s=======================
 
 PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
     : Plugin (info, MakeConfig (KNumParams, K_NUM_PRESETS))
@@ -58,28 +60,28 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->LoadFont ("IBMPlexSans", IBM_PLEX_SANS_FN);
         pGraphics->LoadFont ("IBMPlexSans-Thin", IBM_PLEX_SANS_THIN_FN);
         pGraphics->LoadFont ("fontaudio", FONTAUDIO_FN);
-        pGraphics->LoadFont ("forkawesome-webfont", FORK_AWESOME_FN);
+        pGraphics->LoadFont ("forkAwesome", FORK_AWESOME_FN);
 
         /* Main Styles */
-        const Rar::Graphics::Layout::RarStyle defaultKnob {
+        const rar::graphics::layout::RarStyle defaultKnob {
             true, // label
             true, // value
             {
                 // color spec:
                 COLOR_TRANSPARENT, // Background
-                Rar::Graphics::Layout::RAR_COLOR_BLACK, // Foreground
-                Rar::Graphics::Layout::RAR_COLOR_DARK_GRAY, // Pressed
-                Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
+                IColor (255, 29, 31, 32), // Foreground
+                rar::graphics::layout::RAR_COLOR_DARK_GRAY, // Pressed
+                rar::graphics::layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
-                Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                Rar::Graphics::Layout::RAR_COLOR_DARK_GRAY, // Extra 1
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
+                rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
+                rar::graphics::layout::RAR_COLOR_DARK_GRAY, // Extra 1
+                IColor (255, 197, 197, 193), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
                 // label text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Top, // vertical align
@@ -88,7 +90,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
             {
                 // value text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Bottom, // vertical align
@@ -107,26 +109,27 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
             DEFAULT_WIDGET_ANGLE // widget angle
         };
 
+        
         /* blue knob */
-        const Rar::Graphics::Layout::RarStyle blueKnob {
+        const rar::graphics::layout::RarStyle blueKnob {
             true, // label
             true, // value
             {
                 // color spec:
                 COLOR_TRANSPARENT, // Background
-                IColor (255, 30, 60, 120), // Foreground
-                IColor (255, 30, 60, 160), // Pressed
-                Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
+                IColor (255, 30, 60, 160), // Foreground
+                IColor (255, 19, 117, 168), // Pressed
+                rar::graphics::layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
-                Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
+                rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
                 IColor (255, 30, 60, 160), // Extra 1
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
+                IColor (255, 197, 197, 193), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
                 // label text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Top, // vertical align
@@ -135,7 +138,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
             {
                 // value text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Bottom, // vertical align
@@ -155,25 +158,25 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         };
 
         /* red knob */
-        const Rar::Graphics::Layout::RarStyle redKnob {
+        const rar::graphics::layout::RarStyle redKnob {
             true, // label
             true, // value
             {
                 // color spec:
                 COLOR_TRANSPARENT, // Background
-                IColor (255, 161, 20, 31), // Foreground
-                IColor (255, 201, 20, 31), // Pressed
-                Rar::Graphics::Layout::RAR_COLOR_BLACK, // Frame
+                IColor (255, 128, 18, 18), // Foreground
+                IColor (255, 229, 46, 47), // Pressed
+                rar::graphics::layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
-                Rar::Graphics::Layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                IColor (255, 201, 20, 31), // Extra 1
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // Extra 2
+                rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
+                IColor (255, 229, 46, 47), // Extra 1
+                IColor (255, 197, 197, 193), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
                 // label text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Top, // vertical align
@@ -182,7 +185,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
             {
                 // value text:
                 DEFAULT_TEXT_SIZE, // size
-                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, // color
+                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, // color
                 "IBMPlexSans", // font
                 EAlign::Center, // horizontal align
                 EVAlign::Bottom, // vertical align
@@ -203,7 +206,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         };
 
         /* Button Style */
-        const Rar::Graphics::Layout::RarStyle buttonStyle = Rar::Graphics::Layout::RAR_DEFAULT_STYLE.withColor (kFG, IColor (255, 81, 81, 81)).withColor (kPR, IColor (255, 108, 108, 108)).withShowLabel (false).withShowValue (false).withDrawShadows (true).withWidgetFrac (0.8);
+        const rar::graphics::layout::RarStyle buttonStyle = rar::graphics::layout::RAR_DEFAULT_STYLE.withColor (kFG, IColor (255, 81, 81, 81)).withColor (kPR, IColor (255, 108, 108, 108)).withShowLabel (false).withShowValue (false).withDrawShadows (true).withWidgetFrac (0.8);
 
         const IVStyle buttonStyleIV = DEFAULT_STYLE.WithColor (kFG, IColor (255, 81, 81, 81)).WithColor (kPR, IColor (255, 108, 108, 108)).WithShowLabel (false).WithShowValue (false).WithDrawShadows (true).WithWidgetFrac (0.8);
 
@@ -212,38 +215,41 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
 
         /* Main Controls */
         const auto b = pGraphics->GetBounds(); // background bounds
-        const auto barTop = b.GetFromTop (40.0F); // top bar bounds
+        const auto barTop = b.GetFromTop (50.0F); // top bar bounds
         const auto barBottom = b.GetFromBottom (20.0F); // bottom bar bounds
 
-        pGraphics->AttachPanelBackground (Rar::Graphics::Layout::RAR_DEFAULT_BACKGROUNDCOLOR); // background color
+        pGraphics->AttachPanelBackground (IColor (255, 20, 20, 20)); // background color
 
 #pragma region TopBar
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarPanel (barTop, IColor (255, 17, 17, 17), false));
+        pGraphics->AttachControl (new rar::graphics::controls::RarPanel (barTop, IColor (255, 17, 17, 17), false));
 
-        pGraphics->AttachControl (new ITextControl (IRECT (20.0F, 0, 240.0F, 40.0F),
-                                                    GetPluginName(),
+        pGraphics->AttachControl (new ITextControl (IRECT (20.0F, 0, 240.0F, 50.0F),
+                                                    "TENEBRIS",
                                                     IText (48.0F,
-                                                           Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE,
+                                                           rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE,
                                                            "IBMPlexSans",
                                                            EAlign::Near,
                                                            EVAlign::Bottom),
                                                     DEFAULT_BGCOLOR,
                                                     false));
 
+
         /* Preset Menu  *WIP* */
 
         /* PowerButton */
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarTextToggleControl (barTop.GetFromRight (40.0F).GetCentredInside (40.0F, 30.0F),
+        pGraphics->AttachControl (new rar::graphics::controls::RarTextToggleControl (barTop.GetFromRight (40.0F).GetCentredInside (40.0F, 30.0F),
                                                                                      KIsActive,
-                                                                                     ICON_FAU_POWERSWITCH,
-                                                                                     ICON_FAU_POWERSWITCH,
+                                                                                     ICON_FAD_POWERSWITCH,
+                                                                                     ICON_FAD_POWERSWITCH,
                                                                                      IText (24.0F,
-                                                                                            Rar::Graphics::Layout::RAR_COLOR_GREEN.WithContrast (0.3F),
+                                                                                            rar::graphics::layout::RAR_COLOR_GREEN.WithContrast (0.3F),
                                                                                             "fontaudio"),
                                                                                      IText (24.0F,
-                                                                                            Rar::Graphics::Layout::RAR_COLOR_RED.WithContrast (1.0F),
+                                                                                            rar::graphics::layout::RAR_COLOR_RED,
                                                                                             "fontaudio"),
                                                                                      DEFAULT_BGCOLOR));
+
+        pGraphics->AttachControl (new rar::graphics::display::SettingsMenu (barTop.GetFromRight (100.0f).GetCentredInside (24.0f)));
 
 #pragma endregion TopBar
 
@@ -270,7 +276,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
 #pragma region Middle
 
         // Status LEDs
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarLedControl (b.GetReducedFromTop (90).GetFromTop (14).GetReducedFromRight (20).GetFromRight (20),
+        pGraphics->AttachControl (new rar::graphics::controls::RarLedControl (b.GetReducedFromTop (90).GetFromTop (14).GetReducedFromRight (20).GetFromRight (20),
                                                                               COLOR_GREEN.WithContrast (0.8F),
                                                                               KIsActive),
                                   CSignalInLed);
@@ -278,7 +284,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->AttachControl (new ITextControl (b.GetReducedFromTop (90).GetFromTop (14).GetReducedFromRight (45).GetFromRight (39),
                                                     "Signal In",
                                                     IText (14,
-                                                           Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE,
+                                                           rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE,
                                                            "IBMPlexSans")));
 
         pGraphics->AttachControl (new ILEDControl (b.GetReducedFromTop (130).GetFromTop (14).GetReducedFromRight (20).GetFromRight (20),
@@ -288,42 +294,42 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->AttachControl (new ITextControl (b.GetReducedFromTop (130).GetFromTop (14).GetReducedFromRight (45).GetFromRight (37),
                                                     "Clipping",
                                                     IText (14,
-                                                           Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE,
+                                                           rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE,
                                                            "IBMPlexSans")));
 
         // Group Bits and sampleRate
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarGroupControl (b.GetReducedFromTop (60).GetFromTop (90).GetCentredInside (400.0F, 120.0F), "Main Controls", 150.0F));
+        pGraphics->AttachControl (new rar::graphics::controls::RarGroupControl (b.GetReducedFromTop (60).GetFromTop (90).GetCentredInside (400.0F, 120.0F), "Main Controls", 150.0F));
 
         // Knobs
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
+        pGraphics->AttachControl (new rar::graphics::controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (100),
                                                                               KBits,
                                                                               "",
                                                                               redKnob,
                                                                               true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
+        pGraphics->AttachControl (new rar::graphics::controls::RarVectorKnob (b.GetReducedFromTop (60).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (100),
                                                                               KSampleRate,
                                                                               "",
                                                                               blueKnob,
                                                                               true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
+        pGraphics->AttachControl (new rar::graphics::controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 3).GetCentredInside (100),
                                                                               KInputGain,
                                                                               "",
                                                                               defaultKnob,
                                                                               true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+        pGraphics->AttachControl (new rar::graphics::controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetReducedFromLeft (PLUG_WIDTH / 3).GetReducedFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
                                                                               KMix,
                                                                               "",
                                                                               defaultKnob,
                                                                               true))
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
+        pGraphics->AttachControl (new rar::graphics::controls::RarVectorKnob (b.GetReducedFromTop (170).GetFromTop (100).GetFromRight (PLUG_WIDTH / 3).GetCentredInside (100),
                                                                               KOutputGain,
                                                                               "",
                                                                               defaultKnob,
@@ -331,7 +337,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
             ->SetActionFunction (ShowBubbleHorizontalActionFunc);
 
         // Filter Buttons
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarToggleControl (b.GetReducedFromTop (240).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (36.0F, 28.0F),
+        pGraphics->AttachControl (new rar::graphics::controls::RarToggleControl (b.GetReducedFromTop (240).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (36.0F, 28.0F),
                                                                                  KLpActive,
                                                                                  "",
                                                                                  buttonStyle,
@@ -340,12 +346,12 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                                   kNoTag,
                                   "");
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarTextToggleControl (b.GetReducedFromTop (237).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (32.0F, 32.0F),
+        pGraphics->AttachControl (new rar::graphics::controls::RarTextToggleControl (b.GetReducedFromTop (237).GetFromTop (100).GetFromLeft (PLUG_WIDTH / 2).GetReducedFromLeft (PLUG_WIDTH / 6).GetCentredInside (32.0F, 32.0F),
                                                                                      KLpActive,
-                                                                                     ICON_FAU_FILTER_LOWPASS,
-                                                                                     ICON_FAU_FILTER_LOWPASS,
-                                                                                     IText (20.0F, Rar::Graphics::Layout::RAR_COLOR_GREEN, "fontaudio"),
-                                                                                     IText (20.0F, Rar::Graphics::Layout::RAR_COLOR_RED, "fontaudio")));
+                                                                                     ICON_FAD_FILTER_LOWPASS,
+                                                                                     ICON_FAD_FILTER_LOWPASS,
+                                                                                     IText (20.0F, rar::graphics::layout::RAR_COLOR_GREEN, "fontaudio"),
+                                                                                     IText (20.0F, rar::graphics::layout::RAR_COLOR_RED, "fontaudio")));
 
         // HighPass Button
         pGraphics->AttachControl (new IVToggleControl (b.GetReducedFromTop (237).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (36.0F, 28.0F),
@@ -357,15 +363,15 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                                   kNoTag,
                                   "");
 
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarTextToggleControl (b.GetReducedFromTop (237).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (32.0F, 32.0F),
+        pGraphics->AttachControl (new rar::graphics::controls::RarTextToggleControl (b.GetReducedFromTop (237).GetFromTop (100).GetFromRight (PLUG_WIDTH / 2).GetReducedFromRight (PLUG_WIDTH / 6).GetCentredInside (32.0F, 32.0F),
                                                                                      KHpActive,
-                                                                                     ICON_FAU_FILTER_HIGHPASS,
-                                                                                     ICON_FAU_FILTER_HIGHPASS,
-                                                                                     IText (20.0F, Rar::Graphics::Layout::RAR_COLOR_GREEN, "fontaudio"),
-                                                                                     IText (20.0F, Rar::Graphics::Layout::RAR_COLOR_RED, "fontaudio")));
+                                                                                     ICON_FAD_FILTER_HIGHPASS,
+                                                                                     ICON_FAD_FILTER_HIGHPASS,
+                                                                                     IText (20.0F, rar::graphics::layout::RAR_COLOR_GREEN, "fontaudio"),
+                                                                                     IText (20.0F, rar::graphics::layout::RAR_COLOR_RED, "fontaudio")));
 
         // Clipping Button
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarToggleButton (b.GetReducedFromTop (237).GetFromTop (100).GetCentredInside (100.0F, 28.0F),
+        pGraphics->AttachControl (new rar::graphics::controls::RarToggleButton (b.GetReducedFromTop (237).GetFromTop (100).GetCentredInside (100.0F, 28.0F),
                                                                                 KClippingEnabled),
                                   CClippingButton,
                                   "");
@@ -373,10 +379,10 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
 #pragma endregion Middle
 
 #pragma region BottomBar
-        pGraphics->AttachControl (new Rar::Graphics::Controls::RarPanel (barBottom, IColor (255, 17, 17, 17), false));
+        pGraphics->AttachControl (new rar::graphics::controls::RarPanel (barBottom, IColor (255, 17, 17, 17), false));
         pGraphics->AttachControl (new ITextControl (barBottom.GetFromBottom (10.0F),
                                                     "TEST THINGY",
-                                                    IText (DEFAULT_TEXT_SIZE, Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE, "IBMPlexSans", EAlign::Near)),
+                                                    IText (DEFAULT_TEXT_SIZE, rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE, "IBMPlexSans", EAlign::Near)),
                                   CInfo,
                                   "UI");
 
@@ -435,7 +441,7 @@ void PLUG_CLASS_NAME::ProcessBlock (sample** inputs, sample** outputs, int nFram
                                                 // post filter
                                                 if (lpactive)
                                                 {
-                                                    lowPassSvf[c]->setCutoffFreq (Rar::rLimit (40.0, 20000.0, targetSampleRate));
+                                                    lowPassSvf[c]->setCutoffFreq (rar::rLimit (40.0, 20000.0, targetSampleRate));
                                                     tmpSignal = lowPassSvf[c]->processAudioSample (tmpSignal, c);
                                                 }
 
@@ -473,16 +479,18 @@ void PLUG_CLASS_NAME::OnParamChangeUI (int paramIdx, EParamSource source)
 {
     if (auto graphics = GetUI())
     {
+        /*
         const auto b = GetUI()->GetBounds();
         const auto bottomBar = b.GetFromBottom (20.0F);
         GetUI()->RemoveControlWithTag (CInfoText);
-        GetUI()->AttachControl (new Rar::Graphics::Display::RarInfoText (bottomBar,
+        GetUI()->AttachControl (new rar::graphics::display::RarInfoText (bottomBar,
                                                                          paramIdx,
                                                                          IText (14,
-                                                                                Rar::Graphics::Layout::RAR_COLOR_WORNOUT_WHITE,
+                                                                                rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE,
                                                                                 "IBMPlexSans",
                                                                                 EAlign::Center)),
                                 CInfoText);
+        */
 
         if (GetParam (KIsActive)->Value() == 0)
         {
@@ -507,7 +515,6 @@ void PLUG_CLASS_NAME::OnParamChangeUI (int paramIdx, EParamSource source)
             GetUI()->DisableControl (KClippingEnabled, false);
         }
 
-        //TODO (Roberto A. Ramirez): Make InfoText show disabled or enabled if boolean instead of int/float (1.0)
     }
 }
 
@@ -519,24 +526,24 @@ void PLUG_CLASS_NAME::OnReset()
     /* Initialize filters and construct them */
     for (auto ch = 0; ch < 2; ++ch)
     {
-        highPassSvf[ch] = std::make_unique<Rar::Dsp::Svf::ZSvf<double>>(); // 200 Hz
-        lowPassSvf[ch] = std::make_unique<Rar::Dsp::Svf::ZSvf<double>>(); // BrickWall Filter
+        highPassSvf[ch] = std::make_unique<rar::dsp::svf::ZSvf<double>>(); // 200 Hz
+        lowPassSvf[ch] = std::make_unique<rar::dsp::svf::ZSvf<double>>(); // BrickWall Filter
 
-        noise[ch] = std::make_unique<Rar::Utils::Noise::AmpNoise>();
+        noise[ch] = std::make_unique<rar::utils::noise::AmpNoise>();
         noise[ch]->setGain (0.0012);
 
-        highPassSvf[ch]->setFilter (Rar::Dsp::Svf::ZSvf<double>::SvfType::SvfHighpass, 200, 0.71, 0.0); // 200 Hz
+        highPassSvf[ch]->setFilter (rar::dsp::svf::ZSvf<double>::SvfType::SvfHighpass, 200, 0.71, 0.0); // 200 Hz
         highPassSvf[ch]->setSmoothing (1.0);
         highPassSvf[ch]->setSampleRate (GetSampleRate());
 
-        lowPassSvf[ch]->setFilter (Rar::Dsp::Svf::ZSvf<double>::SvfType::SvfLowpass, 80, 0.71, 0.0); // BrickWall Filter WIP
+        lowPassSvf[ch]->setFilter (rar::dsp::svf::ZSvf<double>::SvfType::SvfLowpass, 80, 0.71, 0.0); // BrickWall Filter WIP
         lowPassSvf[ch]->setSmoothing (1.0);
         lowPassSvf[ch]->setSampleRate (GetSampleRate());
     }
 
     /* Initialize Effects */
-    bitCrusher = std::make_unique<Rar::Dsp::BitCrusher<double>>();
-    downSampler = std::make_unique<Rar::Dsp::DownSampler<double>>();
+    bitCrusher = std::make_unique<rar::dsp::BitCrusher<double>>();
+    downSampler = std::make_unique<rar::dsp::DownSampler<double>>();
 
     over_sampler_.Reset (GetBlockSize());
 }

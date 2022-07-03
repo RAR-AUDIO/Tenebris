@@ -57,6 +57,12 @@ enum ECtrlTags
     CNumCtrlTags
 };
 
+enum ETags
+{
+    kAboutButton,
+    kTags
+};
+
 using namespace iplug;
 using namespace igraphics;
 
@@ -74,15 +80,15 @@ public:
 #endif
 private:
     /* Effects Pointer */
-    std::unique_ptr<Rar::Dsp::DownSampler<double, 2>> downSampler;
-    std::unique_ptr<Rar::Dsp::BitCrusher<double>> bitCrusher;
-
-    /* Filters */
-    std::unique_ptr<Rar::Dsp::Svf::ZSvf<double>> lowPassSvf[2];
-    std::unique_ptr<Rar::Dsp::Svf::ZSvf<double>> highPassSvf[2];
-
-    /* Noise */
-    std::unique_ptr<Rar::Utils::Noise::AmpNoise> noise[2];
+    std::unique_ptr<rar::dsp::DownSampler<double, 2>> downSampler;
+    std::unique_ptr<rar::dsp::BitCrusher<double>> bitCrusher;
+                         
+    /* Filters */        
+    std::unique_ptr<rar::dsp::svf::ZSvf<double>> lowPassSvf[2];
+    std::unique_ptr<rar::dsp::svf::ZSvf<double>> highPassSvf[2];
+                    
+    /* Noise */     
+    std::unique_ptr<rar::utils::noise::AmpNoise> noise[2];
 
     /* Clipping */
     std::atomic_bool clippingSignal;

@@ -1,7 +1,7 @@
 #define PLUG_NAME "Tenebris"
 #define PLUG_MFR "RAR-AUDIO"
 #define PLUG_VERSION_HEX 0x00000100
-#define PLUG_VERSION_STR "0.2.0"
+#define PLUG_VERSION_STR "1.0.0"
 #define PLUG_UNIQUE_ID 'qOKl'
 #define PLUG_MFR_ID 'Rara'
 #define PLUG_URL_STR "https://raraudio.net"
@@ -68,4 +68,4 @@
 
 #define BlackScrew_FN "Misc/ScrewBlack.svg" // Black Screw
 #define LedBezel_FN "Misc/LEDBezel.svg" // LED Bezel
-#define Logo_FN "Misc/logowobackground.svg" // Logo
+#define LOGO_FN "Misc/logowoBackground.png" // Logo
