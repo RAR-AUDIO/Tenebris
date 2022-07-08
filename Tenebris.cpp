@@ -15,7 +15,7 @@
 PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
     : Plugin (info, MakeConfig (KNumParams, K_NUM_PRESETS))
 {
-    GetParam (KBits)->InitInt ("Bits", 32, 1, 32, "Bit");
+    GetParam (KBits)->InitInt ("Bits", 24, 1, 24, "Bit");
     GetParam (KSampleRate)->InitFrequency ("Sample Rate", GetSampleRate(), 40.0, GetSampleRate(), 1.0);
     GetParam (KInputGain)->InitDouble ("Input Gain", 100.0f, 0.f, 200.0f, 1.0f, "%");
     GetParam (KMix)->InitDouble ("Dry/Wet", 100.0f, 0.0f, 100.0f, 1.0f, "%");
@@ -75,7 +75,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 DEFAULT_HLCOLOR, // Highlight
                 rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
                 rar::graphics::layout::RAR_COLOR_DARK_GRAY, // Extra 1
-                IColor (255, 197, 197, 193), // Extra 2
+                IColor (255, 245, 245, 245), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
@@ -122,8 +122,8 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 rar::graphics::layout::RAR_COLOR_BLACK, // Frame
                 DEFAULT_HLCOLOR, // Highlight
                 rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
-                IColor (255, 30, 60, 160), // Extra 1
-                IColor (255, 197, 197, 193), // Extra 2
+                IColor (255, 19, 117, 168), // Extra 1
+                IColor (255, 245, 245, 245), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
@@ -170,7 +170,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
                 DEFAULT_HLCOLOR, // Highlight
                 rar::graphics::layout::RAR_COLOR_BLACK_DROP_SHADOW, // Shadow
                 IColor (255, 229, 46, 47), // Extra 1
-                IColor (255, 197, 197, 193), // Extra 2
+                IColor (255, 245, 245, 245), // Extra 2
                 DEFAULT_X3COLOR // Extra 3
             },
             {
@@ -226,7 +226,7 @@ PLUG_CLASS_NAME::PLUG_CLASS_NAME (const InstanceInfo& info)
         pGraphics->AttachControl (new ITextControl (IRECT (20.0F, 0, 240.0F, 50.0F),
                                                     "TENEBRIS",
                                                     IText (48.0F,
-                                                           rar::graphics::layout::RAR_COLOR_WORNOUT_WHITE,
+                                                           rar::graphics::layout::RAR_COLOR_WHITE_SMOKE,
                                                            "IBMPlexSans",
                                                            EAlign::Near,
                                                            EVAlign::Bottom),
@@ -415,7 +415,7 @@ void PLUG_CLASS_NAME::ProcessBlock (sample** inputs, sample** outputs, int nFram
                                 {
                                     for (auto s = 0; s < nFrames; ++s)
                                     {
-                                        for (auto c = 0; c < NOutChansConnected(); c++)
+                                        for (auto c = 0; c < NOutChansConnected(); ++c)
                                         {
                                             if (active)
                                             {
@@ -472,7 +472,7 @@ void PLUG_CLASS_NAME::OnIdle()
         SendControlValueFromDelegate (CClippingLed, 0.0);
 
     if (GetUI())
-        dynamic_cast<ITextControl*> (GetUI()->GetControlWithTag (CInfo))->SetStrFmt (1024, "Samplerate: %6.0f | Framesize: %d | Channels: %d/%d | Version: %s", GetSampleRate(), GetBlockSize(), NInChansConnected(), NOutChansConnected(), PLUG_VERSION_STR);
+        dynamic_cast<ITextControl*> (GetUI()->GetControlWithTag (CInfo))->SetStrFmt (69, "Samplerate: %6.0f | Framesize: %d | Channels: %d/%d", GetSampleRate(), GetBlockSize(), NInChansConnected(), NOutChansConnected());
 }
 
 void PLUG_CLASS_NAME::OnParamChangeUI (int paramIdx, EParamSource source)
